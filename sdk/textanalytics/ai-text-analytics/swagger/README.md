@@ -14,10 +14,7 @@ output-folder: ../
 source-code-folder-path: ./src/generated
 input-file: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b2a2f8bdac81a285f541d03f60b452f9fd8fe38a/specification/cognitiveservices/data-plane/TextAnalytics/stable/v3.0/TextAnalytics.json
 add-credentials: false
-<<<<<<< HEAD
 package-version: 1.0.1
-=======
->>>>>>> [Text Analytics] Regenerating the SDK using the new code generator
 v3: true
 use-extension:
   "@autorest/typescript": "6.0.0-dev.20200618.1"
