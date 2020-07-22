@@ -2,6 +2,8 @@
 
 ## 1.0.1 (Unreleased)
 
+- The `text` property of the `SentenceSentiment` interface is no longer optional because the service always returns it.
+
 
 ## 1.0.0 (2020-06-09)
 
