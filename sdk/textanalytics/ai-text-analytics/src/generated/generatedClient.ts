@@ -195,7 +195,7 @@ const entitiesRecognitionPiiOperationSpec: coreHttp.OperationSpec = {
   httpMethod: "POST",
   responses: {
     200: {
-      bodyMapper: Mappers.PiiEntitiesResult
+      bodyMapper: Mappers.EntitiesResult
     },
     default: {
       bodyMapper: Mappers.ErrorResponse
