@@ -91,7 +91,7 @@
     "node-fetch": "^2.6.0",
     "priorityqueuejs": "^1.0.0",
     "semaphore": "^1.0.5",
-    "tslib": "^2.0.0",
+    "tslib": "2.0.3",
     "universal-user-agent": "^6.0.0",
     "uuid": "^8.3.0"
   },

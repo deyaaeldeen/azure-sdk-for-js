@@ -67,7 +67,7 @@
     "fs-extra": "^8.1.0",
     "nise": "^4.0.3",
     "nock": "^12.0.3",
-    "tslib": "^2.0.0",
+    "tslib": "2.0.3",
     "md5": "^2.2.1"
   },
   "devDependencies": {

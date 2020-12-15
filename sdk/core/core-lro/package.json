@@ -94,7 +94,7 @@
     "@azure/abort-controller": "^1.0.0",
     "@azure/core-http": "^1.2.0",
     "events": "^3.0.0",
-    "tslib": "^2.0.0"
+    "tslib": "2.0.3"
   },
   "devDependencies": {
     "@azure/eslint-plugin-azure-sdk": "^3.0.0",

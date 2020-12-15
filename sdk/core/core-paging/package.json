@@ -67,7 +67,8 @@
   "sideEffects": true,
   "private": false,
   "dependencies": {
-    "@azure/core-asynciterator-polyfill": "^1.0.0"
+    "@azure/core-asynciterator-polyfill": "^1.0.0",
+    "tslib": "2.0.3"
   },
   "devDependencies": {
     "@azure/eslint-plugin-azure-sdk": "^3.0.0",

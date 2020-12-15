@@ -83,7 +83,8 @@
     "@opentelemetry/api": "^0.10.2",
     "@opentelemetry/core": "^0.10.2",
     "@opentelemetry/semantic-conventions": "^0.10.2",
-    "@opentelemetry/tracing": "^0.10.2"
+    "@opentelemetry/tracing": "^0.10.2",
+    "tslib": "2.0.3"
   },
   "sideEffects": false,
   "keywords": [

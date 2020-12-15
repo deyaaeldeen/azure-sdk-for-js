@@ -50,7 +50,7 @@
   "dependencies": {
     "@azure/abort-controller": "^1.0.0",
     "@azure/core-paging": "^1.1.1",
-    "tslib": "^2.0.0"
+    "tslib": "2.0.3"
   },
   "devDependencies": {
     "@azure/eslint-plugin-azure-sdk": "^3.0.0",

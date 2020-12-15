@@ -68,7 +68,7 @@
     "@opentelemetry/api": "^0.10.2",
     "events": "^3.0.0",
     "jwt-decode": "~2.2.0",
-    "tslib": "^2.0.0"
+    "tslib": "2.0.3"
   },
   "devDependencies": {
     "@azure/eslint-plugin-azure-sdk": "^3.0.0",

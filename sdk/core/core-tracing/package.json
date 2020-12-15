@@ -61,7 +61,7 @@
   "dependencies": {
     "@opencensus/web-types": "0.0.7",
     "@opentelemetry/api": "^0.10.2",
-    "tslib": "^2.0.0"
+    "tslib": "2.0.3"
   },
   "devDependencies": {
     "@azure/eslint-plugin-azure-sdk": "^3.0.0",

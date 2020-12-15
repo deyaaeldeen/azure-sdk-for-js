@@ -93,7 +93,7 @@
     "@azure/logger": "^1.0.0",
     "@opentelemetry/api": "^0.10.2",
     "form-data": "^3.0.0",
-    "tslib": "^2.0.0",
+    "tslib": "2.0.3",
     "https-proxy-agent": "^5.0.0",
     "uuid": "^8.3.0"
   },

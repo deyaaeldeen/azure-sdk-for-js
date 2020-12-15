@@ -80,7 +80,7 @@
     "@azure/core-https": "1.0.0-beta.1",
     "@azure/core-tracing": "1.0.0-preview.9",
     "@opentelemetry/api": "^0.10.2",
-    "tslib": "^2.0.0"
+    "tslib": "2.0.3"
   },
   "devDependencies": {
     "@azure/core-xml": "1.0.0-beta.1",
