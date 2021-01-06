@@ -2,17 +2,11 @@
 // Licensed under the MIT license.
 
 import { Context } from "mocha";
-import * as dotenv from "dotenv";
 
 import { ClientSecretCredential } from "@azure/identity";
 import { env, Recorder, record, RecorderEnvironmentSetup } from "@azure/test-utils-recorder";
 
 import { AttestationClient, AttestationClientOptionalParams } from "../../src/";
-
-//import { Certificate } from '@fidm/x509';
-//import { ASN1 } from '@fidm/asn1';
-
-dotenv.config();
 
 const replaceableVariables: { [k: string]: string } = {
   AZURE_CLIENT_ID: "azure_client_id",
@@ -25,12 +19,6 @@ const replaceableVariables: { [k: string]: string } = {
   policySigningCertificate2: "policy_signing_certificate2",
   isolatedSigningCertificate: "isolated_signing_certificate"
 };
-
-export const testEnv = new Proxy(replaceableVariables, {
-  get: (target, key: string) => {
-    return env[key] || target[key];
-  }
-});
 
 export const environmentSetup: RecorderEnvironmentSetup = {
   replaceableVariables,
@@ -60,16 +48,16 @@ export function createRecordedClient(
   options?: AttestationClientOptionalParams
 ): AttestationClient {
   const credential = new ClientSecretCredential(
-    testEnv.AZURE_TENANT_ID,
-    testEnv.AZURE_CLIENT_ID,
-    testEnv.AZURE_CLIENT_SECRET
+    env.AZURE_TENANT_ID,
+    env.AZURE_CLIENT_ID,
+    env.AZURE_CLIENT_SECRET
   );
   switch (endpointType) {
     case "AAD": {
-      return new AttestationClient(credential, testEnv.AAD_ATTESTATION_URL, options);
+      return new AttestationClient(credential, env.AAD_ATTESTATION_URL, options);
     }
     case "Isolated": {
-      return new AttestationClient(credential, testEnv.ISOLATED_ATTESTATION_URL, options);
+      return new AttestationClient(credential, env.ISOLATED_ATTESTATION_URL, options);
     }
     case "Shared": {
       return new AttestationClient(credential, "https://shareduks.uks.attest.azure.net", options);

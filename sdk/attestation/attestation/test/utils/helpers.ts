@@ -8,6 +8,9 @@ import { AttestationClient } from "../../src/";
 import { decode } from "jsonwebtoken";
 import * as jsrsasign from "jsrsasign"; // works in the browser
 
+//import { Certificate } from '@fidm/x509';
+//import { ASN1 } from '@fidm/asn1';
+
 export function decodeJWT(
   attestationToken: string,
   client: AttestationClient

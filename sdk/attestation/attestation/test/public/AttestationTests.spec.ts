@@ -118,7 +118,7 @@ describe("[AAD] Attestation Client", function() {
     "dOd2FRR1RjZHBhMEVDCklRQ1V0OFNHdnhLbWpwY00vejBXUDlEdm84aDJrNWR1MWlXRGRCa0FuKzBpaUE9" +
     "PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCgA";
 
-  it("#AttestSgxShared", async () => {
+  it.only("#AttestSgxShared", async () => {
     let client: AttestationClient;
     client = createRecordedClient("Shared");
     const binaryRuntimeData = base64url.decodeString(_runtimeData);
