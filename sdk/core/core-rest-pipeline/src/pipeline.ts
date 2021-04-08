@@ -23,6 +23,7 @@ import { decompressResponsePolicy } from "./policies/decompressResponsePolicy";
 import { proxyPolicy } from "./policies/proxyPolicy";
 import { isNode } from "./util/helpers";
 import { formDataPolicy } from "./policies/formDataPolicy";
+import { AddPipelineOptions } from ".";
 
 /**
  * Policies are executed in phases.
@@ -389,6 +390,11 @@ export function createEmptyPipeline(): Pipeline {
   return HttpPipeline.create();
 }
 
+export interface CustomPipelinePolicy {
+  policy: PipelinePolicy;
+  options: AddPipelineOptions;
+}
+
 /**
  * Defines options that are used to configure the HTTP pipeline for
  * an SDK client.
@@ -413,6 +419,17 @@ export interface PipelineOptions {
    * Options for adding user agent details to outgoing requests.
    */
   userAgentOptions?: UserAgentPolicyOptions;
+  /**
+   * Add a new policy to the pipeline.
+   * @param policy - A policy that manipulates a request.
+   * @param options - A set of options for when the policy should run.
+   */
+  customPolicies: CustomPipelinePolicy[];
+  /**
+   * Remove a policy from the pipeline.
+   * @param options - Options that let you specify which policies to remove.
+   */
+  policiesToBeRemoved: { name?: string; phase?: PipelinePhase }[];
 }
 
 /**
@@ -447,6 +464,13 @@ export function createPipelineFromOptions(options: InternalPipelineOptions): Pip
   pipeline.addPolicy(exponentialRetryPolicy(options.retryOptions), { phase: "Retry" });
   pipeline.addPolicy(redirectPolicy(options.redirectOptions), { afterPhase: "Retry" });
   pipeline.addPolicy(logPolicy(options.loggingOptions), { afterPhase: "Retry" });
+  options.customPolicies.forEach(({ policy, options }) => pipeline.addPolicy(policy, options));
+  options.policiesToBeRemoved.forEach(({ name, phase }) =>
+    pipeline.removePolicy({
+      name,
+      phase
+    })
+  );
 
   return pipeline;
 }

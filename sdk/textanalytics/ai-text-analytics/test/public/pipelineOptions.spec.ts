@@ -9,7 +9,7 @@ import { createClient } from "./utils/recordedClient";
 import { PipelineRequest, PipelineResponse, createHttpHeaders } from "@azure/core-rest-pipeline";
 
 describe("TextAnalyticsClient Custom PipelineOptions", function() {
-  it("use custom HTTPClient", async () => {
+  it.only("use custom HTTPClient", async () => {
     const pipelineTester = new Promise<DetectLanguageResultArray>((resolve) => {
       const client = createClient("APIKey", {
         httpClient: {

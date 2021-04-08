@@ -11,6 +11,7 @@ import { createClient, createRecorder } from "./utils/recordedClient";
 import { TextAnalyticsClient } from "../../src";
 import { assertAllSuccess } from "./utils/resultHelper";
 import { checkEntityTextOffset } from "./utils/stringIndexTypeHelpers";
+import { FullOperationResponse } from "@azure/core-client";
 
 const testDataEn = [
   "I had a wonderful trip to Seattle last week and even visited the Space Needle 2 times!",
@@ -81,6 +82,19 @@ describe("[API Key] TextAnalyticsClient", /** @this Mocha.Context */ function() 
       const results = await client.recognizePiiEntities([
         "Your social-security number is 078-05-1120."
       ]);
+      assert.equal(results.length, 1);
+      assertAllSuccess(results);
+    });
+
+    it("#test core v2", async function() {
+      const results = await client.recognizePiiEntities([
+        "Your social-security number is 078-05-1120."
+      ], "en", {
+        onResponse: (rawResponse: FullOperationResponse) => {
+          console.log(`status code: ${rawResponse.status}`);
+          console.log(`body: ${rawResponse.bodyAsText}`);
+        }
+      });
       assert.equal(results.length, 1);
       assertAllSuccess(results);
     });
