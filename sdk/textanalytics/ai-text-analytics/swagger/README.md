@@ -16,8 +16,7 @@ input-file: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/d2982a8
 add-credentials: false
 package-version: 5.1.0-beta.5
 v3: true
-use-extension:
-  "@autorest/typescript": "6.0.0-dev.20210121.2"
+use: /home/dealmaha/v6-lro
 hide-clients: true
 ```
 

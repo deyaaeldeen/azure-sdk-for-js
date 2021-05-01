@@ -6,7 +6,7 @@
  * Changes may cause incorrect behavior and will be lost if the code is regenerated.
  */
 
-import { OperationOptions, OperationSpec, createSerializer } from "@azure/core-client";
+import * as coreHttp from "@azure/core-http";
 import * as Parameters from "./models/parameters";
 import * as Mappers from "./models/mappers";
 import { GeneratedClientContext } from "./generatedClientContext";
@@ -18,6 +18,7 @@ import {
   GeneratedClientAnalyzeStatusResponse,
   GeneratedClientHealthStatusOptionalParams,
   GeneratedClientHealthStatusResponse,
+  GeneratedClientCancelHealthJobOptionalParams,
   GeneratedClientCancelHealthJobResponse,
   MultiLanguageBatchInput,
   GeneratedClientHealthOptionalParams,
@@ -56,10 +57,13 @@ export class GeneratedClient extends GeneratedClientContext {
   analyze(
     options?: GeneratedClientAnalyzeOptionalParams
   ): Promise<GeneratedClientAnalyzeResponse> {
+    const operationArguments: coreHttp.OperationArguments = {
+      options: coreHttp.operationOptionsToRequestOptionsBase(options || {})
+    };
     return this.sendOperationRequest(
-      { options },
+      operationArguments,
       analyzeOperationSpec
-    );
+    ) as Promise<GeneratedClientAnalyzeResponse>;
   }
 
   /**
@@ -73,10 +77,14 @@ export class GeneratedClient extends GeneratedClientContext {
     jobId: string,
     options?: GeneratedClientAnalyzeStatusOptionalParams
   ): Promise<GeneratedClientAnalyzeStatusResponse> {
+    const operationArguments: coreHttp.OperationArguments = {
+      jobId,
+      options: coreHttp.operationOptionsToRequestOptionsBase(options || {})
+    };
     return this.sendOperationRequest(
-      { jobId, options },
+      operationArguments,
       analyzeStatusOperationSpec
-    );
+    ) as Promise<GeneratedClientAnalyzeStatusResponse>;
   }
 
   /**
@@ -88,10 +96,14 @@ export class GeneratedClient extends GeneratedClientContext {
     jobId: string,
     options?: GeneratedClientHealthStatusOptionalParams
   ): Promise<GeneratedClientHealthStatusResponse> {
+    const operationArguments: coreHttp.OperationArguments = {
+      jobId,
+      options: coreHttp.operationOptionsToRequestOptionsBase(options || {})
+    };
     return this.sendOperationRequest(
-      { jobId, options },
+      operationArguments,
       healthStatusOperationSpec
-    );
+    ) as Promise<GeneratedClientHealthStatusResponse>;
   }
 
   /**
@@ -101,12 +113,16 @@ export class GeneratedClient extends GeneratedClientContext {
    */
   cancelHealthJob(
     jobId: string,
-    options?: OperationOptions
+    options?: GeneratedClientCancelHealthJobOptionalParams
   ): Promise<GeneratedClientCancelHealthJobResponse> {
+    const operationArguments: coreHttp.OperationArguments = {
+      jobId,
+      options: coreHttp.operationOptionsToRequestOptionsBase(options || {})
+    };
     return this.sendOperationRequest(
-      { jobId, options },
+      operationArguments,
       cancelHealthJobOperationSpec
-    );
+    ) as Promise<GeneratedClientCancelHealthJobResponse>;
   }
 
   /**
@@ -119,10 +135,14 @@ export class GeneratedClient extends GeneratedClientContext {
     input: MultiLanguageBatchInput,
     options?: GeneratedClientHealthOptionalParams
   ): Promise<GeneratedClientHealthResponse> {
+    const operationArguments: coreHttp.OperationArguments = {
+      input,
+      options: coreHttp.operationOptionsToRequestOptionsBase(options || {})
+    };
     return this.sendOperationRequest(
-      { input, options },
+      operationArguments,
       healthOperationSpec
-    );
+    ) as Promise<GeneratedClientHealthResponse>;
   }
 
   /**
@@ -137,10 +157,14 @@ export class GeneratedClient extends GeneratedClientContext {
     input: MultiLanguageBatchInput,
     options?: GeneratedClientEntitiesRecognitionGeneralOptionalParams
   ): Promise<GeneratedClientEntitiesRecognitionGeneralResponse> {
+    const operationArguments: coreHttp.OperationArguments = {
+      input,
+      options: coreHttp.operationOptionsToRequestOptionsBase(options || {})
+    };
     return this.sendOperationRequest(
-      { input, options },
+      operationArguments,
       entitiesRecognitionGeneralOperationSpec
-    );
+    ) as Promise<GeneratedClientEntitiesRecognitionGeneralResponse>;
   }
 
   /**
@@ -156,10 +180,14 @@ export class GeneratedClient extends GeneratedClientContext {
     input: MultiLanguageBatchInput,
     options?: GeneratedClientEntitiesRecognitionPiiOptionalParams
   ): Promise<GeneratedClientEntitiesRecognitionPiiResponse> {
+    const operationArguments: coreHttp.OperationArguments = {
+      input,
+      options: coreHttp.operationOptionsToRequestOptionsBase(options || {})
+    };
     return this.sendOperationRequest(
-      { input, options },
+      operationArguments,
       entitiesRecognitionPiiOperationSpec
-    );
+    ) as Promise<GeneratedClientEntitiesRecognitionPiiResponse>;
   }
 
   /**
@@ -173,10 +201,14 @@ export class GeneratedClient extends GeneratedClientContext {
     input: MultiLanguageBatchInput,
     options?: GeneratedClientEntitiesLinkingOptionalParams
   ): Promise<GeneratedClientEntitiesLinkingResponse> {
+    const operationArguments: coreHttp.OperationArguments = {
+      input,
+      options: coreHttp.operationOptionsToRequestOptionsBase(options || {})
+    };
     return this.sendOperationRequest(
-      { input, options },
+      operationArguments,
       entitiesLinkingOperationSpec
-    );
+    ) as Promise<GeneratedClientEntitiesLinkingResponse>;
   }
 
   /**
@@ -190,10 +222,14 @@ export class GeneratedClient extends GeneratedClientContext {
     input: MultiLanguageBatchInput,
     options?: GeneratedClientKeyPhrasesOptionalParams
   ): Promise<GeneratedClientKeyPhrasesResponse> {
+    const operationArguments: coreHttp.OperationArguments = {
+      input,
+      options: coreHttp.operationOptionsToRequestOptionsBase(options || {})
+    };
     return this.sendOperationRequest(
-      { input, options },
+      operationArguments,
       keyPhrasesOperationSpec
-    );
+    ) as Promise<GeneratedClientKeyPhrasesResponse>;
   }
 
   /**
@@ -208,10 +244,14 @@ export class GeneratedClient extends GeneratedClientContext {
     input: LanguageBatchInput,
     options?: GeneratedClientLanguagesOptionalParams
   ): Promise<GeneratedClientLanguagesResponse> {
+    const operationArguments: coreHttp.OperationArguments = {
+      input,
+      options: coreHttp.operationOptionsToRequestOptionsBase(options || {})
+    };
     return this.sendOperationRequest(
-      { input, options },
+      operationArguments,
       languagesOperationSpec
-    );
+    ) as Promise<GeneratedClientLanguagesResponse>;
   }
 
   /**
@@ -225,16 +265,20 @@ export class GeneratedClient extends GeneratedClientContext {
     input: MultiLanguageBatchInput,
     options?: GeneratedClientSentimentOptionalParams
   ): Promise<GeneratedClientSentimentResponse> {
+    const operationArguments: coreHttp.OperationArguments = {
+      input,
+      options: coreHttp.operationOptionsToRequestOptionsBase(options || {})
+    };
     return this.sendOperationRequest(
-      { input, options },
+      operationArguments,
       sentimentOperationSpec
-    );
+    ) as Promise<GeneratedClientSentimentResponse>;
   }
 }
 // Operation Specifications
-const serializer = createSerializer(Mappers, /* isXml */ false);
+const serializer = new coreHttp.Serializer(Mappers, /* isXml */ false);
 
-const analyzeOperationSpec: OperationSpec = {
+const analyzeOperationSpec: coreHttp.OperationSpec = {
   path: "/analyze",
   httpMethod: "POST",
   responses: {
@@ -256,7 +300,7 @@ const analyzeOperationSpec: OperationSpec = {
   mediaType: "json",
   serializer
 };
-const analyzeStatusOperationSpec: OperationSpec = {
+const analyzeStatusOperationSpec: coreHttp.OperationSpec = {
   path: "/analyze/jobs/{jobId}",
   httpMethod: "GET",
   responses: {
@@ -281,7 +325,7 @@ const analyzeStatusOperationSpec: OperationSpec = {
   headerParameters: [Parameters.accept],
   serializer
 };
-const healthStatusOperationSpec: OperationSpec = {
+const healthStatusOperationSpec: coreHttp.OperationSpec = {
   path: "/entities/health/jobs/{jobId}",
   httpMethod: "GET",
   responses: {
@@ -306,7 +350,7 @@ const healthStatusOperationSpec: OperationSpec = {
   headerParameters: [Parameters.accept],
   serializer
 };
-const cancelHealthJobOperationSpec: OperationSpec = {
+const cancelHealthJobOperationSpec: coreHttp.OperationSpec = {
   path: "/entities/health/jobs/{jobId}",
   httpMethod: "DELETE",
   responses: {
@@ -326,7 +370,7 @@ const cancelHealthJobOperationSpec: OperationSpec = {
   headerParameters: [Parameters.accept],
   serializer
 };
-const healthOperationSpec: OperationSpec = {
+const healthOperationSpec: coreHttp.OperationSpec = {
   path: "/entities/health/jobs",
   httpMethod: "POST",
   responses: {
@@ -349,7 +393,7 @@ const healthOperationSpec: OperationSpec = {
   mediaType: "json",
   serializer
 };
-const entitiesRecognitionGeneralOperationSpec: OperationSpec = {
+const entitiesRecognitionGeneralOperationSpec: coreHttp.OperationSpec = {
   path: "/entities/recognition/general",
   httpMethod: "POST",
   responses: {
@@ -376,7 +420,7 @@ const entitiesRecognitionGeneralOperationSpec: OperationSpec = {
   mediaType: "json",
   serializer
 };
-const entitiesRecognitionPiiOperationSpec: OperationSpec = {
+const entitiesRecognitionPiiOperationSpec: coreHttp.OperationSpec = {
   path: "/entities/recognition/pii",
   httpMethod: "POST",
   responses: {
@@ -405,7 +449,7 @@ const entitiesRecognitionPiiOperationSpec: OperationSpec = {
   mediaType: "json",
   serializer
 };
-const entitiesLinkingOperationSpec: OperationSpec = {
+const entitiesLinkingOperationSpec: coreHttp.OperationSpec = {
   path: "/entities/linking",
   httpMethod: "POST",
   responses: {
@@ -432,7 +476,7 @@ const entitiesLinkingOperationSpec: OperationSpec = {
   mediaType: "json",
   serializer
 };
-const keyPhrasesOperationSpec: OperationSpec = {
+const keyPhrasesOperationSpec: coreHttp.OperationSpec = {
   path: "/keyPhrases",
   httpMethod: "POST",
   responses: {
@@ -455,7 +499,7 @@ const keyPhrasesOperationSpec: OperationSpec = {
   mediaType: "json",
   serializer
 };
-const languagesOperationSpec: OperationSpec = {
+const languagesOperationSpec: coreHttp.OperationSpec = {
   path: "/languages",
   httpMethod: "POST",
   responses: {
@@ -478,7 +522,7 @@ const languagesOperationSpec: OperationSpec = {
   mediaType: "json",
   serializer
 };
-const sentimentOperationSpec: OperationSpec = {
+const sentimentOperationSpec: coreHttp.OperationSpec = {
   path: "/sentiment",
   httpMethod: "POST",
   responses: {
