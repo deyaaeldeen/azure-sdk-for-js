@@ -50,14 +50,14 @@
 
   /**
    * Converts a hex encoded string to its base64 equivalent.
-   * @param value Hex encoded value
+   * @param value - Hex encoded value
    */
   export function base64FromHex(value : string): string {
-    if (value.length % 2 != 0) {
+    if (value.length % 2 !== 0) {
       throw new Error("base64FromHex: Input must be a multiple of 2 characters");
     }
-    let byteArray = new Array();
-    for (var i = 0 ; i < value.length ; i += 2) {
+    const byteArray = new Array();
+    for (let i = 0 ; i < value.length ; i += 2) {
       byteArray.push(parseInt(value.substr(i, 2), 16));
     }
 

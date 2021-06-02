@@ -1,24 +1,18 @@
-/*
- * Copyright (c) Microsoft Corporation.
- * Licensed under the MIT License.
- *
- */
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
 
 import {base64UrlDecodeString, base64FromHex} from "../utils/base64";
 import {AttestationSigningKey} from "./attestationSigningKey"
 import { KJUR, X509, RSAKey } from "jsrsasign"
 import { bytesToString } from "../utils/utf8.browser";
 
-/**
- * @hideconstructor
- */
 export class AttestationToken
 {
     constructor(token: string ) {
         this._token = token;
 
-        let pieces = token.split('.');
-        if (pieces.length != 3) {
+        const pieces = token.split('.');
+        if (pieces.length !== 3) {
             throw Error("Incorrectly formatted token:");
         }
         this._headerBytes = base64UrlDecodeString(pieces[0]);
@@ -40,9 +34,9 @@ export class AttestationToken
 
     private _jwsVerifier: KJUR.jws.JWS.JWSResult;
 
-    public get_body()
+    public get_body(): Record<string,unknown> | undefined
     {
-        return this._jwsVerifier.payloadObj;
+        return this._jwsVerifier.payloadObj as any;
     }
 
     public deserialize() : string
@@ -55,14 +49,14 @@ export class AttestationToken
     }
 
     public static serialize(body: string, signer ?: AttestationSigningKey) : AttestationToken {
-        let header: {
+        const header: {
             alg : string,
             [k:string]: any} = {alg:'none'};
 
         if (signer) {
-            let x5c = new X509();
+            const x5c = new X509();
             x5c.readCertPEM(signer?.certificate);
-            let pubKey = x5c.getPublicKey();
+            const pubKey = x5c.getPublicKey();
             if (pubKey instanceof RSAKey) {
                 header.alg = "RS256"; 
             }
@@ -79,7 +73,7 @@ export class AttestationToken
             header.alg = "none";
         }
     
-        let encodedToken = KJUR.jws.JWS.sign(header.alg, header, body, signer?.key);
+        const encodedToken = KJUR.jws.JWS.sign(header.alg, header, body, signer?.key);
         return new AttestationToken(encodedToken);
     }
     

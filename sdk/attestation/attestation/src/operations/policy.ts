@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
+
 /*
  * Copyright (c) Microsoft Corporation.
  * Licensed under the MIT License.
@@ -23,7 +26,7 @@ export class Policy {
 
   /**
    * Initialize a new instance of the class Policy class.
-   * @param client Reference to the service client
+   * @param client - Reference to the service client
    */
   constructor(client: AttestationClient) {
     this.client = client;
@@ -31,9 +34,9 @@ export class Policy {
 
   /**
    * Retrieves the current policy for an attestation type.
-   * @param attestationType Specifies the trusted execution environment to be used to validate the
-   *                        evidence
-   * @param options The options parameters.
+   * @param attestationType - Specifies the trusted execution environment to be used to validate the
+   *                          evidence
+   * @param options - The options parameters.
    */
   get(
     attestationType: AttestationType,
@@ -44,11 +47,11 @@ export class Policy {
 
   /**
    * Sets the policy for a given attestation type.
-   * @param attestationType Specifies the trusted execution environment to be used to validate the
-   *                        evidence
-   * @param newAttestationPolicy JWT Expressing the new policy whose body is a StoredAttestationPolicy
-   *                             object.
-   * @param options The options parameters.
+   * @param attestationType - Specifies the trusted execution environment to be used to validate the
+   *                          evidence
+   * @param newAttestationPolicy - JWT Expressing the new policy whose body is a StoredAttestationPolicy
+   *                               object.
+   * @param options - The options parameters.
    */
   set(
     attestationType: AttestationType,
@@ -60,10 +63,10 @@ export class Policy {
 
   /**
    * Resets the attestation policy for the specified tenant and reverts to the default policy.
-   * @param attestationType Specifies the trusted execution environment to be used to validate the
-   *                        evidence
-   * @param policyJws JSON Web Signature with an empty policy document
-   * @param options The options parameters.
+   * @param attestationType - Specifies the trusted execution environment to be used to validate the
+   *                          evidence
+   * @param policyJws - JSON Web Signature with an empty policy document
+   * @param options - The options parameters.
    */
   reset(
     attestationType: AttestationType,
