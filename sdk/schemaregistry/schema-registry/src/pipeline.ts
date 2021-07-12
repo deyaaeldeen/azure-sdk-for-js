@@ -8,10 +8,10 @@ import {
   InternalPipelineOptions,
   PipelineOptions,
   ServiceClientOptions,
-  TokenCredential,
   createPipelineFromOptions,
   bearerTokenAuthenticationPolicy
-} from "@azure/core-http";
+} from "@azure/core-client";
+import { TokenCredential } from "@azure/core-auth";
 
 /**
  * Builds ServiceClientOptions from PipelineOptions and credentials.

@@ -2,7 +2,7 @@
 // Licensed under the MIT license.
 
 import { GeneratedSchemaRegistryClient } from "./generated/generatedSchemaRegistryClient";
-import { TokenCredential } from "@azure/core-http";
+import { TokenCredential } from "@azure/core-auth";
 import { createPipeline } from "./pipeline";
 import { convertSchemaIdResponse, convertSchemaResponse } from "./conversions";
 
@@ -104,6 +104,7 @@ export class SchemaRegistryClient implements SchemaRegistry {
    * @returns Schema with given ID or undefined if no schema was found with the given ID.
    */
   async getSchemaById(id: string, options?: GetSchemaByIdOptions): Promise<Schema | undefined> {
+    const { onResponse } = options;
     try {
       const response = await this.client.schema.getById(id, options);
       return convertSchemaResponse(response);
