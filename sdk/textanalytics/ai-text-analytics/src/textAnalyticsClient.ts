@@ -76,6 +76,9 @@ import {
 } from "./lro/analyze/operation";
 import { AnalysisPollOperationState, OperationMetadata } from "./lro/poller";
 import { TextAnalyticsAction } from "./textAnalyticsAction";
+import { HealthLro } from "./healthLro";
+import { LroEngine } from "../../../core/core-lro/types/core-lro";
+import { PagedAnalyzeHealthcareEntitiesResult } from "./analyzeHealthcareEntitiesResult";
 
 export {
   BeginAnalyzeActionsOptions,
@@ -933,12 +936,35 @@ export class TextAnalyticsClient {
       realOptions = (languageOrOptions as BeginAnalyzeHealthcareEntitiesOptions) || {};
     }
 
-    const { updateIntervalInMs, resumeFrom, ...restOptions } = realOptions;
-    const poller = new BeginAnalyzeHealthcarePoller({
-      client: this.client,
-      documents: realInputs,
-      options: restOptions,
-      updateIntervalInMs: updateIntervalInMs,
+    const {
+      updateIntervalInMs,
+      resumeFrom,
+      onResponse,
+      disableServiceLogs,
+      modelVersion,
+      requestOptions,
+      serializerOptions,
+      abortSignal,
+      stringIndexType,
+      includeStatistics,
+      tracingOptions
+    } = realOptions;
+    const lro = new HealthLro(
+      this.client,
+      {
+        onResponse,
+        requestOptions,
+        serializerOptions,
+        abortSignal,
+        tracingOptions
+      },
+      { loggingOptOut: disableServiceLogs, stringIndexType, modelVersion },
+      { includeStatistics },
+      realInputs
+    );
+
+    const poller = new LroEngine<PagedAnalyzeHealthcareEntitiesResult, AnalyzeHealthcareOperationState>(lro, {
+      intervalInMs: updateIntervalInMs,
       resumeFrom: resumeFrom
     });
 
